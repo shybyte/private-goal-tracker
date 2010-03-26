@@ -13,12 +13,12 @@
   
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/private_goal_tracker/greet</url-pattern>
+    <url-pattern>/private-goal-tracker/greet</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>Private_goal_tracker.html</welcome-file>
+    <welcome-file>private-goal-tracker.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
