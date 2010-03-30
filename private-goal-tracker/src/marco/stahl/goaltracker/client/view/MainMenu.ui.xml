@@ -14,15 +14,16 @@
 			padding: 2px;
 			float: left;
 			background: #f8f8f8;
-		}
-		
-		.selected {
 			font-weight: bold;
 		}
 		
+		.menu li a{
+			font-weight: normal;
+		}
+
+		
 	</ui:style>
 	<ul class="{style.menu}" >
-		<li class="{style.selected}"> Goal List</li>
-		<li><a href="#options">Options</a></li>
+		
 	</ul>
 </ui:UiBinder> 

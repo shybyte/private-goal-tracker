@@ -1,14 +1,12 @@
 package marco.stahl.goaltracker.client;
 
-import java.util.List;
-
 import marco.stahl.goaltracker.client.presenter.Presenter;
-import marco.stahl.goaltracker.client.presenter.WeeklyAchievedGoalValuesPresenter;
-import marco.stahl.goaltracker.shared.GoalValue;
-import marco.stahl.goaltracker.shared.Week;
-import marco.stahl.goaltracker.shared.WeeklyGoalValues;
+import marco.stahl.goaltracker.client.presenter.WeeklyGoalValuesPresenter;
+import marco.stahl.goaltracker.client.view.MainMenu;
+import static marco.stahl.goaltracker.client.view.MainMenu.MenuItem.*;
+import marco.stahl.goaltracker.client.view.WeeklyGoalValuesView;
+import marco.stahl.goaltracker.shared.Model;
 
-import com.google.common.collect.Lists;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
@@ -17,9 +15,13 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class AppController implements ValueChangeHandler<String>, Presenter {
 
 	private HasWidgets container;
+	private Model model;
+	private final MainMenu mainMenu;
 
-	public AppController() {
+	public AppController(MainMenu mainMenu) {
+		this.mainMenu = mainMenu;
 		History.addValueChangeHandler(this);
+		model = new Model();
 	}
 
 	@Override
@@ -35,13 +37,14 @@ public class AppController implements ValueChangeHandler<String>, Presenter {
 		if (presenter != null) {
 			presenter.go(container);
 		}
+		
+		mainMenu.display(token);
 
 	}
 
 	private Presenter getPresenterFromToken(String token) {
-		if ("list".equals(token)) {
-			List<GoalValue> list = Lists.newArrayList();
-			return new WeeklyAchievedGoalValuesPresenter(new WeeklyGoalValues(new Week(1), list)); 
+		if (GOAL_LIST.belongsTo(token)) {
+			return new WeeklyGoalValuesPresenter(model,new WeeklyGoalValuesView()); 
 		}
 		return null;
 	}
