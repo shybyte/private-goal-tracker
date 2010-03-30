@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:my="urn:import:marco.stahl.goaltracker.client.utilwidgets">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel>
+			<g:Button ui:field="prevButton" text="&lt;" />
+			Week
+			<span ui:field="weekDisplayName">24.4.10 - 31.4.10</span>
+			<g:Button ui:field="nextButton" text="&gt;" />
+		</g:HTMLPanel>
+		<my:TableRowPanel ui:field="tableRowPanel"></my:TableRowPanel>
+		<g:Button ui:field="addGoal" text="Add Goal" />
+	</g:HTMLPanel>
+</ui:UiBinder> 

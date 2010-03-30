@@ -3,13 +3,14 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:my="urn:import:marco.stahl.goaltracker.client.view" >
 	<ui:style>
 		h1 {
-			margin-bottom: 5px;
+			margin: 0;
+			margin-bottom: 0.3em;
+			font-size: 1.5em;
 		}
 	</ui:style>
 	<g:HTMLPanel>
 		<h1>Private Goal Tracker</h1>
 		<my:MainMenu ui:field="mainMenu"/>
-		<g:Button ui:field="addGoal" text="Add Goal" />
-		<g:Button ui:field="resetValues" text="Reset Values" />
+		<g:SimplePanel ui:field="pageViewPanel"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

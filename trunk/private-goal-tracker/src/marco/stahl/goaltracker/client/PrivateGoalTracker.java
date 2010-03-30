@@ -1,5 +1,7 @@
 package marco.stahl.goaltracker.client;
 
+import marco.stahl.goaltracker.client.view.GoalTrackerView;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -12,7 +14,9 @@ public class PrivateGoalTracker implements EntryPoint {
 			.create(GreetingService.class);
 	
 	public void onModuleLoad() {
-		AppController appController = new AppController();
-		appController.go(RootPanel.get("app"));
+		GoalTrackerView goalTrackerView = new GoalTrackerView();
+		RootPanel.get("app").add(goalTrackerView);
+		AppController appController = new AppController(goalTrackerView.getMainMenu());
+		appController.go(goalTrackerView.getPageViewPanel());
 	}
 }
