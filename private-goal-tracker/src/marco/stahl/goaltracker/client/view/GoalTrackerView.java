@@ -6,6 +6,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 
 public class GoalTrackerView extends Composite {
 
@@ -15,13 +16,15 @@ public class GoalTrackerView extends Composite {
 	interface GoalTrackerViewUiBinder extends UiBinder<Widget, GoalTrackerView> {
 	}
 
-	@UiField
+	@UiField(provided=true)
 	MainMenu mainMenu;
 	
 	@UiField
 	SimplePanel pageViewPanel;
 	
-	public GoalTrackerView() {
+	@Inject
+	public GoalTrackerView(MainMenu  mainMenu) {
+		this.mainMenu = mainMenu;
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	

@@ -1,16 +1,17 @@
 package marco.stahl.goaltracker.client;
 
+import static marco.stahl.goaltracker.client.view.MainMenu.MenuItem.*;
+import marco.stahl.goaltracker.client.factories.GlobalFactory;
 import marco.stahl.goaltracker.client.presenter.Presenter;
 import marco.stahl.goaltracker.client.presenter.WeeklyGoalValuesPresenter;
 import marco.stahl.goaltracker.client.view.MainMenu;
-import static marco.stahl.goaltracker.client.view.MainMenu.MenuItem.*;
-import marco.stahl.goaltracker.client.view.WeeklyGoalValuesView;
 import marco.stahl.goaltracker.shared.Model;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.inject.Inject;
 
 public class AppController implements ValueChangeHandler<String>, Presenter {
 
@@ -18,10 +19,11 @@ public class AppController implements ValueChangeHandler<String>, Presenter {
 	private Model model;
 	private final MainMenu mainMenu;
 
-	public AppController(MainMenu mainMenu) {
+	@Inject
+	public AppController(MainMenu mainMenu,Model model) {
 		this.mainMenu = mainMenu;
+		this.model = model;
 		History.addValueChangeHandler(this);
-		model = new Model();
 	}
 
 	@Override
@@ -44,7 +46,9 @@ public class AppController implements ValueChangeHandler<String>, Presenter {
 
 	private Presenter getPresenterFromToken(String token) {
 		if (GOAL_LIST.belongsTo(token)) {
-			return new WeeklyGoalValuesPresenter(model,new WeeklyGoalValuesView()); 
+			WeeklyGoalValuesPresenter weeklyGoalValuesPresenter = GlobalFactory.getInjector().getWeeklyGoalValuesPresenter();
+			weeklyGoalValuesPresenter.bind(model);
+			return weeklyGoalValuesPresenter; 
 		}
 		return null;
 	}

@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="libs/gwt-crypto-1.0.3.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jsr305.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/guava.jar" sourcepath="war/WEB-INF/lib/guava.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
