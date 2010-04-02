@@ -1,11 +1,10 @@
 package marco.stahl.goaltracker.client.presenter;
 
-import marco.stahl.goaltracker.client.view.GoalTrackerView;
 import marco.stahl.goaltracker.shared.Model;
-import marco.stahl.goaltracker.shared.WeeklyGoalValues;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 
 public class WeeklyGoalValuesPresenter implements Presenter
 {
@@ -16,8 +15,8 @@ public class WeeklyGoalValuesPresenter implements Presenter
 	private Model model;
 	private final Display display;
 
-	public WeeklyGoalValuesPresenter(Model model,Display display) {
-		this.model = model;
+	@Inject
+	public WeeklyGoalValuesPresenter(Display display) {
 		this.display = display;		
 	}
 
@@ -25,6 +24,10 @@ public class WeeklyGoalValuesPresenter implements Presenter
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(display.asWidget());
+	}
+
+	public void bind(Model model) {
+		this.model = model;
 	}
 
 }

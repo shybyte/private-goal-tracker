@@ -7,8 +7,12 @@ import com.google.gwt.dom.client.LIElement;
 import com.google.gwt.dom.client.UListElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+@Singleton
 public class MainMenu extends Widget {
 
 	public enum MenuItem {
@@ -43,9 +47,16 @@ public class MainMenu extends Widget {
 	interface MainMenuUiBinder extends UiBinder<UListElement, MainMenu> {
 	}
 
+	@Inject
 	public MainMenu() {
 		setElement(uiBinder.createAndBindUi(this));
 		display("");
+	}
+	
+	public void clear() {
+		Element element = getElement();
+		element.setInnerHTML("bla");
+		Window.alert("hu"+this);
 	}
 
 	public void display(String selectedMenuItemToken) {
