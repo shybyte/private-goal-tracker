@@ -1,7 +1,6 @@
 package marco.stahl.goaltracker.client.view;
 
 import marco.stahl.goaltracker.client.presenter.WeeklyGoalValuesPresenter.Display;
-import marco.stahl.goaltracker.client.utilwidgets.TableRow;
 import marco.stahl.goaltracker.client.utilwidgets.TableRowPanel;
 
 import com.google.gwt.core.client.GWT;
@@ -26,11 +25,17 @@ public class WeeklyGoalValuesView extends Composite implements Display {
 	@Inject
 	public WeeklyGoalValuesView() {
 		initWidget(uiBinder.createAndBindUi(this));
-		tableRowPanel.add(new GoalValueTableRowView());
 	}
 
 	@Override
 	public Widget asWidget() {
 		return this;
+	}
+
+	@Override
+	public marco.stahl.goaltracker.client.presenter.GoalValueTableRowPresenter.Display addGoalValueRow() {
+		GoalValueTableRowView goalValueTableRowView = new GoalValueTableRowView();
+		tableRowPanel.add(goalValueTableRowView);
+		return goalValueTableRowView;
 	}
 }

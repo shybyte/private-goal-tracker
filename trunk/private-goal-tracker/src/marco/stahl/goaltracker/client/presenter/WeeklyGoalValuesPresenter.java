@@ -1,16 +1,18 @@
 package marco.stahl.goaltracker.client.presenter;
 
+import marco.stahl.goaltracker.shared.GoalValue;
 import marco.stahl.goaltracker.shared.Model;
+import marco.stahl.goaltracker.shared.Week;
 
-import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 
-public class WeeklyGoalValuesPresenter extends AbstractPresenter<WeeklyGoalValuesPresenter.Display>
-{
-	public interface Display extends Presenter.Display{
+public class WeeklyGoalValuesPresenter extends
+		AbstractPresenter<WeeklyGoalValuesPresenter.Display> {
+	public interface Display extends Presenter.Display {
+		GoalValueTableRowPresenter.Display addGoalValueRow();
 	}
-	
+
 	private Model model;
 
 	@Inject
@@ -24,7 +26,12 @@ public class WeeklyGoalValuesPresenter extends AbstractPresenter<WeeklyGoalValue
 
 	@Override
 	void initDisplay() {
-		
+		for (GoalValue goalValue : model.getWeeklyGoalValues(
+				Week.getCurrentWeek()).getValues()) {
+			GoalValueTableRowPresenter goalValueTableRowPresenter = new GoalValueTableRowPresenter(
+					display.addGoalValueRow(), goalValue);
+			goalValueTableRowPresenter.initDisplay();
+		}
 	}
 
 }
