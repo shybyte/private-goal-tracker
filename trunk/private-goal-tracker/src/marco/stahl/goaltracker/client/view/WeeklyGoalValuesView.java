@@ -26,8 +26,7 @@ public class WeeklyGoalValuesView extends Composite implements Display {
 	@Inject
 	public WeeklyGoalValuesView() {
 		initWidget(uiBinder.createAndBindUi(this));
-		tableRowPanel.addTableRow(new TableRow("Hu","hiiii"));
-		tableRowPanel.addTableRow(new TableRow("Holla!","hiiii"));
+		tableRowPanel.add(new GoalValueTableRowView());
 	}
 
 	@Override

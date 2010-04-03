@@ -6,28 +6,25 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
-public class WeeklyGoalValuesPresenter implements Presenter
+public class WeeklyGoalValuesPresenter extends AbstractPresenter<WeeklyGoalValuesPresenter.Display>
 {
-	public interface Display {
-		Widget asWidget();
+	public interface Display extends Presenter.Display{
 	}
 	
 	private Model model;
-	private final Display display;
 
 	@Inject
 	public WeeklyGoalValuesPresenter(Display display) {
-		this.display = display;		
-	}
-
-	@Override
-	public void go(HasWidgets container) {
-		container.clear();
-		container.add(display.asWidget());
+		super(display);
 	}
 
 	public void bind(Model model) {
 		this.model = model;
+	}
+
+	@Override
+	void initDisplay() {
+		
 	}
 
 }
