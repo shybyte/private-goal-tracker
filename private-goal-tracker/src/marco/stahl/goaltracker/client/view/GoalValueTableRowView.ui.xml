@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:my="urn:import:marco.stahl.goaltracker.client.utilwidgets">
+	<ui:style>
+	</ui:style>
+	<my:TableRow>
+	<my:Cell><g:Button text="+"/></my:Cell>
+	<my:Cell text="toll"/>
+	</my:TableRow>
+</ui:UiBinder> 
