@@ -7,6 +7,7 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.common.Guava"/>
 	<inherits name="com.google.gwt.inject.Inject"/>
+	 <inherits name='com.googlecode.gwt.crypto.Crypto'/>
 	
 	<entry-point class="marco.stahl.goaltracker.client.WidgetGallery"></entry-point>
 </module>
