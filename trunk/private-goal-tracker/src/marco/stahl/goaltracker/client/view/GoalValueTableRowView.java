@@ -12,6 +12,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Widget;
 
 public class GoalValueTableRowView extends Composite implements GoalValueTableRowPresenter.Display {
@@ -26,22 +27,19 @@ public class GoalValueTableRowView extends Composite implements GoalValueTableRo
 	private TableRow tableRow;
 
 	@UiField
-	Cell title;
+	Hyperlink title;
 	
 	@UiField
-	SpanElement value;
+	Cell value;
 
 	@UiField
-	SpanElement targetValue;
+	Cell targetValue;
 	
 	@UiField
 	Button plusButton;
 	
 	@UiField
 	Button plusPlusButton;
-	
-	@UiField
-	Button editButton;
 	
 	public GoalValueTableRowView() {
 		tableRow = uiBinder.createAndBindUi(this);
@@ -59,11 +57,6 @@ public class GoalValueTableRowView extends Composite implements GoalValueTableRo
 	}
 
 	@Override
-	public HasClickHandlers getEditButton() {
-		return editButton;
-	}
-
-	@Override
 	public HasClickHandlers getPlusButton() {
 		return plusButton;
 	}
@@ -75,12 +68,17 @@ public class GoalValueTableRowView extends Composite implements GoalValueTableRo
 
 	@Override
 	public void setTargetValue(String targetValue) {
-		this.targetValue.setInnerText(targetValue);
+		this.targetValue.setText(targetValue);
 	}
 
 	@Override
 	public void setValue(String value) {
-		this.value.setInnerText(value);
+		this.value.setText(value);
+	}
+
+	@Override
+	public void setGoalHistoryToken(String token) {
+		this.title.setTargetHistoryToken(token);
 	}
 
 }

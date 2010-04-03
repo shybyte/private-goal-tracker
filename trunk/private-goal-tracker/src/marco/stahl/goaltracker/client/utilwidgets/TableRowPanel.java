@@ -9,7 +9,7 @@ public class TableRowPanel extends ComplexPanel {
 
 	public TableRowPanel() {
 		comfortableTable = new ComfortableTable();
-		setElement(comfortableTable.getBodyElement());
+		setElement(comfortableTable.getElement());
 	}
 
 	public void addTableRow(Widget tableRow) {
@@ -18,7 +18,7 @@ public class TableRowPanel extends ComplexPanel {
 
 	@Override
 	public void add(Widget w) {
-		add(w, getElement());
+		add(w, comfortableTable.getBodyElement());
 	}
 
 }

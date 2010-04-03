@@ -3,6 +3,7 @@ package marco.stahl.goaltracker.client.presenter;
 import marco.stahl.goaltracker.shared.GoalValue;
 import marco.stahl.goaltracker.shared.Model;
 import marco.stahl.goaltracker.shared.Week;
+import marco.stahl.goaltracker.shared.WeeklyGoalValues;
 
 import com.google.inject.Inject;
 
@@ -25,10 +26,11 @@ public class WeeklyGoalValuesPresenter extends
 
 	@Override
 	void initDisplay() {
-		for (GoalValue goalValue : model.getWeeklyGoalValues(
-				Week.getCurrentWeek()).getValues()) {
+		WeeklyGoalValues weeklyGoalValues = model.getWeeklyGoalValues(
+				Week.getCurrentWeek());
+		for (GoalValue goalValue : weeklyGoalValues.getValues()) {
 			GoalValueTableRowPresenter goalValueTableRowPresenter = new GoalValueTableRowPresenter(
-					display.addGoalValueRow(), goalValue);
+					display.addGoalValueRow(), goalValue,weeklyGoalValues.getWeek());
 			goalValueTableRowPresenter.initDisplay();
 		}
 	}
