@@ -1,14 +1,12 @@
 package marco.stahl.goaltracker.client.utilwidgets;
 
-import java.util.Iterator;
-
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.TableCellElement;
 import com.google.gwt.dom.client.TableRowElement;
-import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TableRow extends Widget implements HasWidgets{
+public class TableRow extends ComplexPanel{
 
 	private TableRowElement trElement;
 
@@ -31,25 +29,7 @@ public class TableRow extends Widget implements HasWidgets{
 
 	@Override
 	public void add(Widget w) {
-		trElement.appendChild(w.getElement());
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		// TODO Auto-generated method stub
-		return false;
+		add(w, getElement());
 	}
 	
 }

@@ -4,7 +4,6 @@ import marco.stahl.goaltracker.shared.GoalValue;
 import marco.stahl.goaltracker.shared.Model;
 import marco.stahl.goaltracker.shared.Week;
 
-import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 
 public class WeeklyGoalValuesPresenter extends
