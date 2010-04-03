@@ -13,6 +13,7 @@
   <!-- Other module inherits                                      -->
   <inherits name="com.google.common.Guava"/>
   <inherits name="com.google.gwt.inject.Inject"/>
+   <inherits name='com.googlecode.gwt.crypto.Crypto'/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='marco.stahl.goaltracker.client.PrivateGoalTracker'/>
