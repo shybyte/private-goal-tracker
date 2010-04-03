@@ -4,7 +4,6 @@
 	<ui:style>
 		.buttonColumn {
 			text-align: right;
-			width: 40%;
 			white-space: nowrap;
 		}
 		
@@ -17,24 +16,22 @@
 			text-align: left;
 		}
 		
-		.goalValuesColumn {
+		.numberCol {
 			text-align: right;
+			width: 1em;
+			padding-right:0.2em;
 		}
 	</ui:style>
 	<my:TableRow>
-		<my:Cell styleName="{style.goalTitleColumn}" ui:field="title"
-			text="?" />
-		<my:Cell styleName="{style.goalValuesColumn}">
-			<g:HTML>
-				<span ui:field="value">1</span>
-				/
-				<span ui:field="targetValue">7</span>
-			</g:HTML>
+		<my:Cell styleName="{style.goalTitleColumn}">
+			<g:Hyperlink ui:field="title" text="?"></g:Hyperlink>
 		</my:Cell>
+		<my:Cell styleName="{style.numberCol}" ui:field="value" />
+		<my:Cell text="/" />
+		<my:Cell styleName="{style.numberCol}" ui:field="targetValue" />
 		<my:Cell styleName="{style.buttonColumn}">
 			<g:Button ui:field="plusButton" text="+" />
 			<g:Button ui:field="plusPlusButton" text="++" />
-			<g:Button ui:field="editButton" text="Edit" />
 		</my:Cell>
 	</my:TableRow>
 </ui:UiBinder> 
