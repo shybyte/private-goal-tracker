@@ -1,7 +1,7 @@
 package marco.stahl.goaltracker.client;
 
 import static marco.stahl.goaltracker.client.view.MainMenu.MenuItem.*;
-import marco.stahl.goaltracker.client.factories.GlobalFactory;
+import marco.stahl.goaltracker.client.factories.MyGinjector;
 import marco.stahl.goaltracker.client.presenter.Presenter;
 import marco.stahl.goaltracker.client.presenter.WeeklyGoalValuesPresenter;
 import marco.stahl.goaltracker.client.view.MainMenu;
@@ -18,11 +18,13 @@ public class AppController implements ValueChangeHandler<String>, Presenter {
 	private HasWidgets container;
 	private Model model;
 	private final MainMenu mainMenu;
+	private final MyGinjector myGinjector;
 
 	@Inject
-	public AppController(MainMenu mainMenu,Model model) {
+	public AppController(MainMenu mainMenu,Model model,MyGinjector myGinjector) {
 		this.mainMenu = mainMenu;
 		this.model = model;
+		this.myGinjector = myGinjector;
 		History.addValueChangeHandler(this);
 	}
 
@@ -46,7 +48,7 @@ public class AppController implements ValueChangeHandler<String>, Presenter {
 
 	private Presenter getPresenterFromToken(String token) {
 		if (GOAL_LIST.belongsTo(token)) {
-			WeeklyGoalValuesPresenter weeklyGoalValuesPresenter = GlobalFactory.getInjector().getWeeklyGoalValuesPresenter();
+			WeeklyGoalValuesPresenter weeklyGoalValuesPresenter = myGinjector.getWeeklyGoalValuesPresenter();
 			weeklyGoalValuesPresenter.bind(model);
 			return weeklyGoalValuesPresenter; 
 		}
