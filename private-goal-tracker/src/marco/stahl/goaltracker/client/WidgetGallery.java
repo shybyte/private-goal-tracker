@@ -41,12 +41,7 @@ public class WidgetGallery implements EntryPoint {
 	}
 
 	private void addCryptoTest() {
-        final  byte[] key2= new byte[]{
-            (byte)4,(byte)8,(byte)3,(byte)80,(byte)12,(byte)-9,(byte)-5,(byte)101, 
-            (byte)15,(byte)-8,(byte)3,(byte)0,(byte)90,(byte)-9,(byte)55,(byte)-41, 
-            (byte)-9,(byte)90,(byte)3,(byte)100,(byte)-40,(byte)79,(byte)5,(byte)102};
-
-		
+		// key beetween 16 and 24 chars		
 		addHeader("CryptoTest");
 		final String password = "HalloMyFriends!!";
 		final byte[] key = Str.toBytes(password.toCharArray());

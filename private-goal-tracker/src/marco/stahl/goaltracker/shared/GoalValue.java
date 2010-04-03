@@ -11,4 +11,17 @@ public class GoalValue {
 		this.targetValue = targetValue;
 		this.value = value;
 	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public double getValue() {
+		return value;
+	}
+
+	public double getTargetValue() {
+		return targetValue;
+	}
+	
 }

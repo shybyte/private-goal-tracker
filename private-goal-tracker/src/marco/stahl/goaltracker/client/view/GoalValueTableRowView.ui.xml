@@ -2,9 +2,28 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:my="urn:import:marco.stahl.goaltracker.client.utilwidgets">
 	<ui:style>
+	.buttonColumn {
+		text-align: right;
+		width:40%;
+	}
+	
+	@external gwt-Button;
+	
+	.buttonColumn .gwt-Button{
+		margin-left:3px;
+	}
+	.goalTitleColumn {
+		text-align: left;
+		width:40%;
+	}
+	.goalValuesColumn {
+		text-align: center;
+		width:20%;
+	}
 	</ui:style>
 	<my:TableRow>
-	<my:Cell><g:Button text="+"/></my:Cell>
-	<my:Cell text="toll"/>
+	<my:Cell styleName="{style.goalTitleColumn}" ui:field="title" text="?"/>
+	<my:Cell styleName="{style.goalValuesColumn}"><g:HTML><span>1</span> / <span>7</span></g:HTML></my:Cell>
+	<my:Cell styleName="{style.buttonColumn}"><g:Button text="+"/><g:Button text="++"/><g:Button text="Edit"/></my:Cell>
 	</my:TableRow>
 </ui:UiBinder> 
