@@ -38,8 +38,7 @@ public class GoalValueTableRowPresenter extends
 
 	@Override
 	void initDisplay() {
-		display.setGoalHistoryToken("edit-goal/" + goalValue.getGoal().getId()
-				+ "/" + week.getNumber());
+		display.setGoalHistoryToken(EditGoalValuePresenter.historyToken(goalValue));
 		refresh();
 		display.getPlusButton().addClickHandler(new ClickHandler() {
 
@@ -60,7 +59,8 @@ public class GoalValueTableRowPresenter extends
 	private void refresh() {
 		display.setGoalTitle(goalValue.getGoal().getTitle());
 		display.setValue(FormatUtils.formatNatural(goalValue.getValue()));
-		display.setTargetValue(FormatUtils.formatNatural(goalValue.getTargetValue()));
+		display.setTargetValue(FormatUtils.formatNatural(goalValue
+				.getTargetValue()));
 	}
 
 	protected void inEditButton() {

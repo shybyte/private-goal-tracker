@@ -4,6 +4,18 @@ body {
 	font-size: 12pt;
 }
 
+h1 {
+	margin: 0;
+	margin-bottom: 0.3em;
+	font-size: 1.5em;
+}
+
+h2 {
+	margin: 0;
+	margin-bottom: 0.3em;
+	font-size: 1.2em;
+}
+
 a {
 	text-decoration: none;
 }
@@ -18,4 +30,3 @@ a:hover {
 	border: 1px solid #f0f0f0;
 	width: 320px;
 }
-

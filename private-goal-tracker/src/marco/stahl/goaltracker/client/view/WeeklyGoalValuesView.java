@@ -4,8 +4,10 @@ import marco.stahl.goaltracker.client.presenter.WeeklyGoalValuesPresenter.Displa
 import marco.stahl.goaltracker.client.utilwidgets.TableRowPanel;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -22,6 +24,9 @@ public class WeeklyGoalValuesView extends Composite implements Display {
 	@UiField
 	TableRowPanel tableRowPanel;
 	
+	@UiField
+	Button addGoal;
+	
 	@Inject
 	public WeeklyGoalValuesView() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -37,5 +42,10 @@ public class WeeklyGoalValuesView extends Composite implements Display {
 		GoalValueTableRowView goalValueTableRowView = new GoalValueTableRowView();
 		tableRowPanel.add(goalValueTableRowView);
 		return goalValueTableRowView;
+	}
+
+	@Override
+	public HasClickHandlers getAddGoalButton() {
+		return addGoal;
 	}
 }

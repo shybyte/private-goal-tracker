@@ -27,6 +27,10 @@
 		.tableRowPanel {
 			width: 100%;
 		}
+		
+		.tableRowPanel td{
+			vertical-align: top;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 		<g:HTMLPanel addStyleNames="{style.weekSwitcher}">

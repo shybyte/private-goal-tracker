@@ -6,7 +6,6 @@ import java.util.Map;
 import marco.stahl.goaltracker.client.util.CollectionUtils;
 import marco.stahl.goaltracker.shared.Goal.Type;
 
-
 public class Model {
 	private int goalIdCounter = 0;
 	private List<Goal> goals = CollectionUtils.newArrayList();
@@ -25,7 +24,7 @@ public class Model {
 	}
 
 	private WeeklyGoalValues addNewWeek(Week week) {
-		WeeklyGoalValues weeklyGoalValues = new WeeklyGoalValues(week);
+		WeeklyGoalValues weeklyGoalValues = new WeeklyGoalValues(week,this);
 		for (Goal goal : goals) {
 			weeklyGoalValues.addGoal(goal);
 		}
@@ -49,6 +48,13 @@ public class Model {
 
 	public Goal createGoal(String title, Type type, double targetValue) {
 		return new Goal(goalIdCounter++, title, type, targetValue);
+	}
+
+	public void deleteGoal(GoalValue goalValue) {
+		goals.remove(goalValue.getGoal());		
+		for (WeeklyGoalValues weeklyGoalValues : weeklyGoalValuesByWeek.values()) {
+			weeklyGoalValues.removeGoalFor(goalValue.getGoal());
+		}
 	}
 
 }

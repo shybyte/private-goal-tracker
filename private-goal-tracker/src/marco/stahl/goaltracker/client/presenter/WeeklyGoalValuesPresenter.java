@@ -5,12 +5,17 @@ import marco.stahl.goaltracker.shared.Model;
 import marco.stahl.goaltracker.shared.Week;
 import marco.stahl.goaltracker.shared.WeeklyGoalValues;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.user.client.History;
 import com.google.inject.Inject;
 
 public class WeeklyGoalValuesPresenter extends
 		AbstractPresenter<WeeklyGoalValuesPresenter.Display> {
 	public interface Display extends Presenter.Display {
 		GoalValueTableRowPresenter.Display addGoalValueRow();
+		HasClickHandlers getAddGoalButton();
 	}
 
 	private Model model;
@@ -26,13 +31,26 @@ public class WeeklyGoalValuesPresenter extends
 
 	@Override
 	void initDisplay() {
-		WeeklyGoalValues weeklyGoalValues = model.getWeeklyGoalValues(
-				Week.getCurrentWeek());
+		WeeklyGoalValues weeklyGoalValues = model.getWeeklyGoalValues(Week
+				.getCurrentWeek());
 		for (GoalValue goalValue : weeklyGoalValues.getValues()) {
 			GoalValueTableRowPresenter goalValueTableRowPresenter = new GoalValueTableRowPresenter(
-					display.addGoalValueRow(), goalValue,weeklyGoalValues.getWeek());
+					display.addGoalValueRow(), goalValue, weeklyGoalValues
+							.getWeek());
 			goalValueTableRowPresenter.initDisplay();
 		}
+		
+		display.getAddGoalButton().addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				onAddGoalButton();
+			}
+		});
+	}
+
+	protected void onAddGoalButton() {
+		History.newItem(EditGoalValuePresenter.HISTORY_TOKEN_CREATE);
 	}
 
 }

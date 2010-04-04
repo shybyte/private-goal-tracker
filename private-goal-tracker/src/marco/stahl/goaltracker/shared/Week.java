@@ -51,6 +51,10 @@ public class Week {
 			return false;
 		return true;
 	}
+
+	public static Week forNumber(int week) {
+		return new Week(week);
+	}
 	
 	
 }
