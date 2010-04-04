@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.goalForm {
+			background: #fea;
+			border:1px silver solid;
+			padding:0.5em;
+		}
+		
+		label {
+			display:block;
+		}
+		
+		input,select {
+			display:block;
+			margin-bottom: 1em;	
+		}
+		
+		.buttonRow {
+			overflow: hidden;
+			margin-top: 0.5em;
+		}
+		
+		.deleteButton {
+			float:right;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<h2 ui:field="pageTitle">Edit Goal</h2>
+		
+		<div class="{style.goalForm}">
+			<label>Title</label>
+			<g:TextBox ui:field="goalTitle"></g:TextBox>
+			
+			<label>Type</label>
+			<g:ListBox></g:ListBox>
+			
+			<label>Target Value</label>
+			<g:TextBox ui:field="defaultTargetValue"></g:TextBox>
+			
+		</div>
+		
+		<div class="{style.buttonRow}">
+			<g:Button ui:field="deleteButton" text="Delete" addStyleNames="{style.deleteButton}"/>
+			<g:Button ui:field="saveButton" text="Save"/>
+			<g:Button ui:field="cancelButton" text="Cancel"/>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 
