@@ -2,12 +2,11 @@ package marco.stahl.goaltracker.client;
 
 import static marco.stahl.goaltracker.client.view.MainMenu.MenuItem.*;
 import marco.stahl.goaltracker.client.factories.MyGinjector;
-import marco.stahl.goaltracker.client.presenter.EditGoalValuePresenter;
+import marco.stahl.goaltracker.client.pages.EditGoalValuePage;
 import marco.stahl.goaltracker.client.presenter.Presenter;
 import marco.stahl.goaltracker.client.presenter.WeeklyGoalValuesPresenter;
-import marco.stahl.goaltracker.client.view.EditGoalValueView;
+import marco.stahl.goaltracker.client.presenter.WidgetAdapterPresenter;
 import marco.stahl.goaltracker.client.view.MainMenu;
-import marco.stahl.goaltracker.shared.GoalValue;
 import marco.stahl.goaltracker.shared.Model;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -54,10 +53,10 @@ public class AppController implements ValueChangeHandler<String>, Presenter {
 			WeeklyGoalValuesPresenter weeklyGoalValuesPresenter = myGinjector.getWeeklyGoalValuesPresenter();
 			weeklyGoalValuesPresenter.bind(model);
 			return weeklyGoalValuesPresenter; 
-		} else if (token.startsWith(EditGoalValuePresenter.HISTORY_TOKEN_EDIT) || token.startsWith(EditGoalValuePresenter.HISTORY_TOKEN_CREATE)) {
-			EditGoalValuePresenter editGoalValuePresenter = new EditGoalValuePresenter(new EditGoalValueView(),model);
-			editGoalValuePresenter.loadPage(token);
-			return editGoalValuePresenter;
+		} else if (token.startsWith(EditGoalValuePage.HISTORY_TOKEN_EDIT) || token.startsWith(EditGoalValuePage.HISTORY_TOKEN_CREATE)) {
+			EditGoalValuePage editGoalValuePage = new EditGoalValuePage(model);
+			editGoalValuePage.loadPage(token);
+			return new WidgetAdapterPresenter(editGoalValuePage);
 		}
 		return null;
 	}
