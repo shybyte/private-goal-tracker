@@ -1,5 +1,6 @@
 package marco.stahl.goaltracker.client.presenter;
 
+import marco.stahl.goaltracker.client.pages.EditGoalValuePage;
 import marco.stahl.goaltracker.shared.GoalValue;
 import marco.stahl.goaltracker.shared.Model;
 import marco.stahl.goaltracker.shared.Week;
@@ -50,7 +51,7 @@ public class WeeklyGoalValuesPresenter extends
 	}
 
 	protected void onAddGoalButton() {
-		History.newItem(EditGoalValuePresenter.HISTORY_TOKEN_CREATE);
+		History.newItem(EditGoalValuePage.HISTORY_TOKEN_CREATE);
 	}
 
 }

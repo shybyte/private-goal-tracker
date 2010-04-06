@@ -1,5 +1,6 @@
 package marco.stahl.goaltracker.client.presenter;
 
+import marco.stahl.goaltracker.client.pages.EditGoalValuePage;
 import marco.stahl.goaltracker.client.util.FormatUtils;
 import marco.stahl.goaltracker.shared.GoalValue;
 import marco.stahl.goaltracker.shared.Week;
@@ -38,7 +39,7 @@ public class GoalValueTableRowPresenter extends
 
 	@Override
 	void initDisplay() {
-		display.setGoalHistoryToken(EditGoalValuePresenter.historyToken(goalValue));
+		display.setGoalHistoryToken(EditGoalValuePage.historyToken(goalValue));
 		refresh();
 		display.getPlusButton().addClickHandler(new ClickHandler() {
 
